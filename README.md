@@ -53,3 +53,10 @@ $mediaLink->setMediaId($ticket->getMediaId());
 After obtaining the ticket and persisting the information you want to save, provide the user with the a simple upload form in html that has the action pointing to the url provided by in the upload ticket.  Note, that the media server will return a set of responses back when uploading, so you may want to use some javascript on the end user side to track these in case an error is thrown or to mark that the media was successfully uploaded on the using application side.
 
 ###Playback
+The easist way to have playback for the media is to embed the following twig directive in your template where you wish to display the media, where 'myMediaId', is the media id of the media you wish to display and width and height are the resolution in pixels you wish to display the media as.
+```twig
+{{ render(url('MesdPhantasosClient_embedMedia', { 'mediaId': myMediaId, 'width': 800, 'height': 600 })) }}
+```
+The bundle can support PDFs, video, audio, and images, all the types of media currently supported by Phantasos.
+
+Given that the support for streaming directly from the end user form the server is not currently finished or in place, the client my change later in regards to playback.
