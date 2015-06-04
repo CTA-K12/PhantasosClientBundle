@@ -1,0 +1,8 @@
+<div id="phantasos-container" class="row">
+    <h4>Media is currently <b><span id="processing-status">{{ info.status }}</span></b></h4>
+    <div id="processing-progress" class="col-11-12"></div>
+    <script type="text/javascript">
+        var MEDIA_INFO_ROUTE = '{{ url('MesdPhantasosClient_getInfo', { 'mediaId': mediaId }) }}';
+    </script>
+    <script src="{{ asset('bundles/mesdphantasosclient/js/update.js') }}"></script>
+</div>

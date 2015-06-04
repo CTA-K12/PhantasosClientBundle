@@ -1,0 +1,48 @@
+<div id="phantasos-container" class="row">
+    <link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/4.12/video.js"></script>
+    <video id="phantasos_video" class="video-js vjs-default-skin"
+      controls preload="auto" width="{{ width }}" height="{{ height }}"
+      poster="{{ url('MesdPhantasosClient_getMedia', {
+        'mediaFileId': info.getSmallestOfFormat('image/png').getMediaFileId(),
+        'fileName': info.getSmallestOfFormat('image/png').getName()
+         }) }}"
+      data-setup='{"example_option":true}'>
+      <source src="{{ url('MesdPhantasosClient_getMedia',
+         {
+             'mediaFileId': info.getSmallestOfFormat('video/mp4').getMediaFileId(),
+             'fileName': info.getSmallestOfFormat('video/mp4').getName()
+         }) }}"
+         type='video/mp4' />
+      <source src="{{ url('MesdPhantasosClient_getMedia',
+         {
+             'mediaFileId': info.getSmallestOfFormat('video/webm').getMediaFileId(),
+             'fileName': info.getSmallestOfFormat('video/webm').getName()
+         }) }}"
+         type='video/webm' />
+      <source src="{{ url('MesdPhantasosClient_getMedia',
+         {
+             'mediaFileId': info.getSmallestOfFormat('video/ogg').getMediaFileId(),
+             'fileName': info.getSmallestOfFormat('video/ogg').getName()
+         }) }}"
+         type='video/ogg' />
+     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+         If upgrading is not an option the videos can be directly downloaded in the following formats
+         <a href="{{ url('MesdPhantasosClient_getMedia',
+            {
+                'mediaFileId': info.getSmallestOfFormat('video/mp4').getMediaFileId(),
+                'fileName': info.getSmallestOfFormat('video/mp4').getName()
+            }) }}">MP4</a>
+         <a href="{{ url('MesdPhantasosClient_getMedia',
+            {
+                'mediaFileId': info.getSmallestOfFormat('video/webm').getMediaFileId(),
+                'fileName': info.getSmallestOfFormat('video/webm').getName()
+            }) }}">WEBM</a>
+        <a href="{{ url('MesdPhantasosClient_getMedia',
+           {
+               'mediaFileId': info.getSmallestOfFormat('video/ogg').getMediaFileId(),
+               'fileName': info.getSmallestOfFormat('video/ogg').getName()
+           }) }}">OGG</a>
+     </p>
+    </video>
+</div>

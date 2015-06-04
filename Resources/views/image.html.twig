@@ -1,0 +1,18 @@
+<div id="phantasos-container" class="row">
+    <script src="{{ asset('bundles/mesdphantasosclient/vendor/imager/Imager.min.js') }}"></script>
+    <div>
+        <div class="delayed-image-load" data-src="{{ url('MesdPhantasosClient_getMedia', {
+            'mediaFileId': 'this-should-be-replaced',
+            'fileName': 'this-should-also-be-replaced'
+        })|replace({'this-should-be-replaced/this-should-also-be-replaced': '{width}'}) }}"></div>
+    </div>
+    <script>
+        new Imager({
+            availableWidths: {
+                {% for imgWidth, file in info.getFilesByWidth() %}
+                    {{ imgWidth }} : "{{ file.getMediaFileId() }}/{{ file.getName() }}",
+                {% endfor %}
+            }
+        });
+    </script>
+</div>

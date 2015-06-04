@@ -1,0 +1,24 @@
+<div id="phantasos-container" class="row">
+    <object data="{{ url('MesdPhantasosClient_getMedia',
+       {
+           'mediaFileId': info.getOriginal().getMediaFileId(),
+           'fileName': info.getOriginal().getName()
+       }) }}" type="application/pdf" width="{{ width }}" height="{{ height }}">
+       <p>
+           Your browser does not support viewing embedded PDFs.
+           To view download the PDF <a href="{{ url('MesdPhantasosClient_getMedia',
+              {
+                  'mediaFileId': info.getOriginal().getMediaFileId(),
+                  'fileName': info.getOriginal().getName()
+              }) }}">here</a>
+       </p>
+    </object>
+    <div style="width: {{ width }}px;">
+        <p>
+            If the pdf is not in the correct orientation, right click the document and
+            select either rotate clockwise or rotate counterclockwise.  Pressing
+            'ctrl+]' or 'ctrl+[' will also rotate the document clockwise or
+            counterclockwise.
+        </p>
+    </div>
+</div>

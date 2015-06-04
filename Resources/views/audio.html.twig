@@ -1,0 +1,18 @@
+<div id="phantasos-container" class="row">
+    <script src="{{ asset('bundles/mesdphantasosclient/vendor/audiojs/audio.min.js') }}"></script>
+    <script src="{{ asset('bundles/mesdphantasosclient/js/initAudiojs.js') }}"></script>
+    <audio preload="auto">
+        <source src="{{ url('MesdPhantasosClient_getMedia',
+           {
+               'mediaFileId': info.getLargestOfFormat('audio/mpeg').getMediaFileId(),
+               'fileName': info.getLargestOfFormat('audio/mpeg').getName()
+           }) }}"
+           type='audio/mp3'>
+       <source src="{{ url('MesdPhantasosClient_getMedia',
+          {
+              'mediaFileId': info.getLargestOfFormat('audio/vorbis').getMediaFileId(),
+              'fileName': info.getLargestOfFormat('audio/vorbis').getName()
+          }) }}"
+          type='audio/ogg'>
+    </audio>
+</div>

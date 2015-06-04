@@ -1,0 +1,5 @@
+services:
+    mesd_phantasos_client:
+        class: Mesd\PhantasosClientBundle\Model\PhantasosClient
+        arguments:
+            - @router
