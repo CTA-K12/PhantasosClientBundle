@@ -6,3 +6,10 @@ To install the bundle with your Symfony application, use composer to add the cli
 ```bash
 $ composer require mesd/phantasos-client-bundle "~0.1"
 ```
+Then add the bundle to your app kernel.
+```php
+$bundles = array(
+  ...
+  new Mesd\PhantasosClientBundle\MesdPhantasosClientBundle()
+);
+```
