@@ -1,3 +1,8 @@
 # Phantasos Client Bundle
-THe purpose of this Symfony bundle is to provide a set of tools to make connecting to our simple media server, [Phantasos](https://github.com/MESD/Phantasos)
+The purpose of this Symfony bundle is to provide a set of tools to make connecting to our simple media server, [Phantasos](https://github.com/MESD/Phantasos)
 
+## Getting Started
+To install the bundle with your Symfony application, use composer to add the client to your application.
+```bash
+$ composer require mesd/phantasos-client-bundle "~0.1"
+```
