@@ -1,5 +1,5 @@
 # Phantasos Client Bundle
-The purpose of this Symfony bundle is to provide a set of tools to make connecting to our simple media server, [Phantasos](https://github.com/MESD/Phantasos)
+The purpose of this Symfony bundle is to provide a set of tools to make connecting to our simple media server, [Phantasos](https://github.com/MESD/Phantasos).
 
 ## Getting Started
 To install the bundle with your Symfony application, use composer to add the client to your application.
@@ -38,3 +38,18 @@ public function myMediaIsDoneCallbackAction(Request $request)
 If everything went as expected, then your application is ready to use the client.
 
 ##Usage
+The client bundle will add a new service to the dependency injection container called 'mesd_phantasos_client' that will return the Phantasos Client preconstructed with the host and apikey information needed to make calls to the media server.
+
+###Uploading
+Uploading to Phantasos is a two step process.  First an upload ticket needs to be retrieved from Phantasos along with an upload route.  Then the end user will directly upload the media to media server.  To obtain an the upload ticket information from the client, do as follows.
+```php
+$ticket = $this->get('mesd_phantasos_client')->requestUploadTicket();
+
+// The upload ticket contains information such as the media id that will need to be saved in your application
+$mediaLink = new MediaLink() // Or whatever you are using to persist the media information in the using application
+$mediaLink->setMediaId($ticket->getMediaId());
+// Persist the media link and do whatever other application specific things need to be done
+```
+After obtaining the ticket and persisting the information you want to save, provide the user with the a simple upload form in html that has the action pointing to the url provided by in the upload ticket.  Note, that the media server will return a set of responses back when uploading, so you may want to use some javascript on the end user side to track these in case an error is thrown or to mark that the media was successfully uploaded on the using application side.
+
+###Playback
