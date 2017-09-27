@@ -26,6 +26,27 @@ class ClientController extends Controller
             $this->get('mesd_phantasos_client')->getRawMediaInfo($mediaId)
         );
     }
+    
+    /**
+     * @Route("/phantasos/medialinks/{mediaId}", name="MesdPhantasosClient_getLinks")
+     * @Method({"GET"})
+     */
+    public function getMediaLinksAction(Request $request, $mediaId)
+    {
+        // Get the info for the file
+        $info = $this->get('mesd_phantasos_client')->getMediaInfo($mediaId);
+
+        // If the info is nonexistent throw a 404
+        if (null === $info) {
+            return new Response('Media does not exist', 404);
+        }
+
+        // Get the files and make the links for them
+        return $this->render(
+            'MesdPhantasosClientBundle::links.html.twig',
+            array('info' => $info)
+        );
+    }
 
     /**
      * @Route("/phantasos/mediafile/{mediaFileId}/{fileName}", name="MesdPhantasosClient_getMedia")
