@@ -117,6 +117,18 @@ class ClientController extends Controller
                     array('info' => $info, 'width' => $width, 'height' => $height)
                 );
                 break;
+            case MediaTypes::WORD:
+                return $this->render(
+                    'MesdPhantasosClientBundle::word.html.twig',
+                    array('info' => $info, 'width' => $width, 'height' => $height)
+                );
+                break;
+            case MediaTypes::EXCEL:
+                return $this->render(
+                    'MesdPhantasosClientBundle::excel.html.twig',
+                    array('info' => $info, 'width' => $width, 'height' => $height)
+                );
+                break;
             case MediaTypes::UNKNOWN:
             default:
                 return $this->render(
